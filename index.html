@@ -88,6 +88,8 @@ nav a:hover{background:var(--lav)}
 .prices{display:grid;grid-template-columns:minmax(0,1fr) auto;margin:0}
 .prices dt,.prices dd{padding:11px 0;border-bottom:1px solid var(--line);margin:0}
 .prices dd{text-align:right;font-weight:600;white-space:nowrap;padding-left:16px}
+.stack{display:grid;gap:18px;margin-top:22px}
+.photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:18px;box-shadow:0 20px 40px -28px rgba(47,37,80,.5)}
 .contact a{font-weight:600;font-size:20px;text-decoration-thickness:2px;text-underline-offset:4px;overflow-wrap:anywhere;color:var(--purple)}
 
 /* form */
@@ -226,7 +228,7 @@ textarea{min-height:92px;resize:vertical}
   <div class="in">
     <h2>No gear? Book a bell tent</h2>
     <p>Jemma from Bell Tent Party Co sets up bell tents right here on the property. You book and pay her directly.</p>
-    <div class="two">
+    <div class="stack">
       <div class="card">
         <dl class="prices">
           <dt>2 people, first night</dt><dd>$290</dd>
@@ -236,6 +238,7 @@ textarea{min-height:92px;resize:vertical}
         </dl>
         <p class="note" style="margin:12px 0 0">2-night minimum, so it suits people arriving Friday. Jemma will confirm your total and her booking cutoff.</p>
       </div>
+      <img class="photo" src="img/bell-tent.jpg" width="1200" height="800" loading="lazy" alt="A bell tent set up inside with single beds, pink cushions, jute rugs and a macrame hanging">
       <div class="card contact">
         <h3>Call or text Jemma</h3>
         <p><a href="tel:0423819137">0423 819 137</a></p>
