@@ -199,7 +199,7 @@ textarea{min-height:92px;resize:vertical}
       <div class="card">
         <p class="big">Local? Bring a salad or side.</p>
         <p>I've picked six dishes with five spots each, so we don't end up with 30 potato salads. Grab yours when you RSVP. First in, first served. Make it big, enough for about 15 people as a side.</p>
-        <a class="btn" href="#dish-pick">Pick a dish</a>
+        <a class="btn" href="#dish-pick" id="pickDish">Pick a dish</a>
       </div>
     </div>
   </div>
@@ -291,6 +291,11 @@ textarea{min-height:92px;resize:vertical}
           <input type="text" id="dietary" name="dietary">
         </fieldset>
 
+        <fieldset id="dish-pick">
+          <legend>Bringing a salad or side? <span class="hint">Locals, grab a dish. Five spots each, first in first served. Your spot is saved when you send this form.</span></legend>
+          <div class="opts" id="dishes"></div>
+        </fieldset>
+
         <fieldset>
           <legend>Where are you sleeping?</legend>
           <div class="opts" id="stayOpts"></div>
@@ -319,10 +324,6 @@ textarea{min-height:92px;resize:vertical}
           <p class="callout" id="dogNote" hidden>Great. Just make sure they're fine with other dogs, won't chase birds (or stay on a lead), and that you've got a plan to stop them wandering. No fences, and livestock next door.</p>
         </fieldset>
 
-        <fieldset id="dish-pick">
-          <legend>Bringing a salad or side? <span class="hint">Locals, grab a dish. Five spots each, first in first served.</span></legend>
-          <div class="opts" id="dishes"></div>
-        </fieldset>
 
         <fieldset>
           <label class="lbl" for="occasion">What wrong occasion are you dressing for? <span class="hint">Optional. Spoilers welcome.</span></label>
@@ -451,6 +452,7 @@ textarea{min-height:92px;resize:vertical}
       const stay = STAYS.find(x => x.id === d.stay);
       html = `<h3>You're in, ${first}!</h3><p>See you Saturday 15 May. ${stay && d.stay !== 'home' ? 'Sleeping: ' + esc(stay.name.toLowerCase()) + '. ' : ''}${dish ? 'Bringing: ' + esc(dish.name.toLowerCase()) + '.' : ''}</p>` +
         (d.stay === 'belltent' ? '<p>Don\'t forget to book your bell tent with Jemma on 0423 819 137.</p>' : '') +
+        (dish ? '<p>Screenshot this so you remember what you\'re bringing.</p>' : '') +
         '<p>Now go and work out your outfit.</p>';
     } else {
       html = `<h3>Thanks for letting me know, ${first}.</h3><p>I'll miss you. Have a drink for me.</p>`;
@@ -476,6 +478,16 @@ textarea{min-height:92px;resize:vertical}
   }
 
   form.addEventListener('change', sync);
+
+  // "Pick a dish" in the Food section: they're coming if they're bringing food, so tick "I'm in" and jump to the dishes
+  $('#pickDish').addEventListener('click', e => {
+    e.preventDefault();
+    const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    if (form.hidden) { thanks.scrollIntoView({behavior: smooth}); return; }
+    form.querySelector('input[name=attending][value=yes]').checked = true;
+    sync();
+    $('#dish-pick').scrollIntoView({behavior: smooth, block: 'start'});
+  });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
