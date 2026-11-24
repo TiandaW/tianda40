@@ -91,6 +91,14 @@ nav a:hover{background:var(--lav)}
 .map{margin-top:24px;border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:#bdb1d8;box-shadow:0 20px 40px -28px rgba(47,37,80,.5)}
 .map iframe{display:block;width:100%;height:100%;border:0}
 @media(min-width:700px){.map{aspect-ratio:16/9}}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0 6px}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;border-radius:18px;box-shadow:0 20px 40px -28px rgba(47,37,80,.5)}
+.gallery .g-tall{grid-row:span 2}
+.gallery .g-fig{margin:0;position:relative}
+.gallery .g-fig img{aspect-ratio:3/2;height:auto}
+.gallery img:not(.g-tall){aspect-ratio:3/2}
+.gallery figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.88);color:var(--plum);font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px}
+@media(max-width:640px){.gallery{grid-template-columns:minmax(0,1fr)}.gallery .g-tall{grid-row:auto;aspect-ratio:4/5;height:auto}}
 .stack{display:grid;gap:18px;margin-top:22px}
 .photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:18px;box-shadow:0 20px 40px -28px rgba(47,37,80,.5)}
 .contact a{font-weight:600;font-size:20px;text-decoration-thickness:2px;text-underline-offset:4px;overflow-wrap:anywhere;color:var(--purple)}
@@ -150,6 +158,7 @@ textarea{min-height:92px;resize:vertical}
     <a class="btn" href="#camping">Camping</a>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Bear+Mountain+Ranch+Byangum+NSW&amp;query_place_id=ChIJo_lv0pDvkGsRXoheOGAVrtM">Map</a>
   </div>
+  <p class="center" style="margin:16px 0 0;font-weight:500">RSVP by Thursday 1 April 2027</p>
 </header>
 
 <nav aria-label="Sections"><div class="scroll">
@@ -209,6 +218,14 @@ textarea{min-height:92px;resize:vertical}
   <div class="in">
     <h2>Camping</h2>
     <p>Pitch up from 9am Saturday, or Friday night if you're coming a long way. Tents, swags, vans and caravans all welcome.</p>
+    <div class="gallery">
+      <img class="g-tall" src="img/ranch-drive.jpg" width="900" height="1200" loading="lazy" alt="Gravel drive beside a wide mown lawn, with trees and a rocky, forested mountain behind under a blue sky">
+      <img src="img/ranch-hills.jpg" width="1200" height="800" loading="lazy" alt="Rolling green hills, big shade trees and a pond in soft morning light">
+      <figure class="g-fig">
+        <img src="img/ranch-tractor.jpg" width="1200" height="800" loading="lazy" alt="A plastic skeleton sitting at the wheel of an old rusty tractor on the lawn">
+        <figcaption>One of the locals. Turned up early.</figcaption>
+      </figure>
+    </div>
     <div class="two">
       <div class="card">
         <h3>What's here</h3>
@@ -234,12 +251,13 @@ textarea{min-height:92px;resize:vertical}
     <div class="stack">
       <div class="card">
         <dl class="prices">
-          <dt>Standard tent, 2 people, 1 night</dt><dd>$290</dd>
-          <dt>Each extra night</dt><dd>$100</dd>
+          <dt>2 people, 1 night</dt><dd>$290</dd>
+          <dt>2 people, 2 nights</dt><dd>$390</dd>
           <dt>Each extra person</dt><dd>$20</dd>
           <dt>Deluxe tent, 2 people, 1 night</dt><dd>$350</dd>
         </dl>
         <p class="note" style="margin:12px 0 0">Each tent sleeps up to 8 and comes with mattresses, all the bedding and linen, rugs, lighting and side tables. Deluxe adds a picnic table, chairs and a big umbrella ($25 per extra person). Jemma sets up and packs down. A deposit holds your tent, and it's refunded in full if you cancel at least 2 weeks out.</p>
+        <p class="note" style="margin:10px 0 0"><strong>Travel fee:</strong> none if 3 or more tents get booked. If fewer, you'll pay no more than $20 towards it and I'll cover the rest.</p>
       </div>
       <img class="photo" src="img/bell-tent.jpg" width="1200" height="800" loading="lazy" alt="A bell tent set up inside with single beds, pink cushions, jute rugs and a macrame hanging">
       <div class="card contact">
@@ -247,7 +265,7 @@ textarea{min-height:92px;resize:vertical}
         <p><a href="tel:0423819137">0423 819 137</a></p>
         <p><a href="mailto:belltentpartyco@outlook.com">belltentpartyco@outlook.com</a></p>
         <p><a href="https://www.belltentpartyco.com.au/copy-of-slumber-parties">belltentpartyco.com.au</a></p>
-        <p style="margin:0">Tell her you're coming to Tianda's 40th, and ask how far ahead you need to book. Bell tent questions go to Jemma, not me.</p>
+        <p style="margin:0"><strong>Book as early as you can.</strong> Tents are first in, first served, so please have yours sorted by 1 April. Tell her you're coming to Tianda's 40th. Bell tent questions go to Jemma, not me.</p>
       </div>
     </div>
   </div>
@@ -258,7 +276,8 @@ textarea{min-height:92px;resize:vertical}
   <div class="in">
     <p class="kicker">Let me know</p>
     <h2>RSVP</h2>
-    <p>As soon as you can, please. It helps me plan food and campsites. Plans changed? Fill it in again with the same mobile number and I'll use the latest one.</p>
+    <p class="big">By Thursday 1 April, please. No joke.</p>
+    <p>It gives me time to sort the food and campsites. Plans changed? Fill it in again with the same mobile number and I'll use the latest one.</p>
 
     <form id="rsvpForm" class="formcard" novalidate>
       <fieldset>
