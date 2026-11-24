@@ -139,7 +139,6 @@ textarea{min-height:92px;resize:vertical}
 </style>
 </head>
 <body>
-<div class="draft" id="draftBar">Draft preview. The RSVP form isn't connected yet, so nothing gets saved.</div>
 
 <header class="hero blush">
   <div class="inv">
@@ -366,8 +365,8 @@ textarea{min-height:92px;resize:vertical}
 
 <script>
 {
-  // Paste the Google Apps Script web app URL here once it's set up. Empty = preview mode.
-  const ENDPOINT = '';
+  // Google Apps Script web app ("Tianda's 40th – RSVP form") that saves RSVPs to the RSVP sheet. Empty = preview mode.
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbypZX2_tXV8lmKzKsd3Q3Wa25FP25Np_ISbAt7W0ixPN9n06wE16oG7D0kq2n1cOcoIqg/exec';
 
   const DISHES = [
     {id:'garden',  name:'Simple garden salad', cap:5},
@@ -390,7 +389,6 @@ textarea{min-height:92px;resize:vertical}
   const form = $('#rsvpForm'), msg = $('#formMsg'), thanks = $('#thanks');
   let taken = {}, lastAtt = null;
 
-  if (ENDPOINT) $('#draftBar').hidden = true;
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const attending = () => (form.querySelector('input[name=attending]:checked') || {}).value;
